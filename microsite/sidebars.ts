@@ -409,6 +409,8 @@ export default {
         'plugins/internationalization',
         'plugins/analytics',
         'plugins/feature-flags',
+        'plugins/mcp-actions-backend',
+
         sidebarElementWithIndex(
           {
             label: 'OpenAPI',
