@@ -147,6 +147,15 @@ export default {
             'auth/troubleshooting',
           ],
         ),
+       
+        sidebarElementWithIndex(
+         {
+        label: 'AI',
+        description: 'AI-related features and integrations.',
+         },
+        ['features/ai/index'],
+        ),
+
         sidebarElementWithIndex(
           {
             label: 'Kubernetes',

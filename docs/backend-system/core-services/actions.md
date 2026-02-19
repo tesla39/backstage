@@ -126,6 +126,40 @@ async function fetchUserInfo(
 }
 ```
 
+## Error Handling
+
+When invoking actions, prefer throwing errors from `@backstage/errors` so callers receive meaningful error responses.
+
+- Errors from `@backstage/errors` are handled and surfaced with useful messages.
+- Unknown errors may result in a generic server error response.
+
+**Recommendation:** Use errors from `@backstage/errors` when applicable.
+
+For the list of supported errors, see the Backstage errors API documentation.
+
+Example:
+
+```ts
+import { NotAllowedError, NotFoundError } from '@backstage/errors';
+
+action: async ({ input }) => {
+  // ... get current user and some resource
+
+  if (!resource) {
+    throw new NotFoundError(`Resource ${input.id} not found`);
+  }
+
+  if (!hasPermission(user, resource)) {
+    throw new NotAllowedError(
+      `User does not have sufficient permissions for ${resource}`,
+    );
+  }
+};
+
+```
+
+---
+
 ## Best Practices
 
 For comprehensive guidance on action design, naming conventions, and schema design, see the [Actions Registry Best Practices](./actions-registry.md#best-practices) documentation.
