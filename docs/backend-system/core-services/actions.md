@@ -155,7 +155,6 @@ action: async ({ input }) => {
     );
   }
 };
-
 ```
 
 ---
